@@ -4,12 +4,12 @@ from sklearn.base import BaseEstimator, TransformerMixin
 class CategoricalImputer(BaseEstimator(), TransformerMixin()):
     """
     categorical data missing value imputer
-    
+
     Arguments:
         BaseEstimator {[type]} -- [description]
         TransformerMixin {[type]} -- [description]
     """
-    
+
     def __init__(self, variable = None) -> None:
         if not isinstance(variables, list):
             self.variables = [variables]
@@ -20,16 +20,15 @@ class CategoricalImputer(BaseEstimator(), TransformerMixin()):
         """
         Fit statement to accomodate the sklearn pipeline
         """
-        
+
         return self
-    
-    def transform(self, X: pd.Dataframe) -> pd.DataFrame:
+
+    def transform(self, X: pd.DataFrame) -> pd.DataFrame:
         """
-        Apply transformation to dataframe
-        
-        Arguments:
-            X {pd.Dataframe} -- [description]
-        
-        Returns:
-            pd.DataFrame -- [description]
-        """                   
+        Apply the transorms to the data frame
+        """
+        X = X.copy()
+        for feature in self.variables:
+            X[feature] = X[feature].fillna('Missing')
+
+        return X
