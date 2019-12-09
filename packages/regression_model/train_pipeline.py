@@ -18,9 +18,10 @@ FEATURES = ['MSSubClass', 'MSZoning', 'Neighborhood', 'OverallQual',
             'YrSold']
 
 def save_pipeline() -> None:
-    """
-    Persist the pipeline
-    """
+    '''
+    persist the pipeline
+    '''
+
     pass
 
 def run_training() -> None:
